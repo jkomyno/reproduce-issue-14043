@@ -6,6 +6,7 @@
   "main": "lib",
   "scripts": {
     "clean": "rimraf lib",
+    "clean:deep": "rimraf lib node_modules .turbo",
     "build": "pnpm clean && tsc",
     "prettier-check": "prettier --parser=typescript \"src/**/*.{js,ts}\" --check",
     "prettier-write": "prettier --parser=typescript \"src/**/*.{js,ts}\" --write",

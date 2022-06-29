@@ -6,15 +6,19 @@
   "main": "lib",
   "scripts": {
     "clean": "rimraf lib",
+    "clean:deep": "rimraf lib node_modules .turbo",
     "build": "pnpm clean && tsc",
     "prettier-check": "prettier --parser=typescript \"src/**/*.{js,ts}\" --check",
     "prettier-write": "prettier --parser=typescript \"src/**/*.{js,ts}\" --write",
     "typecheck": "tsc",
     "eslint-check": "eslint \"src/**/*.{js,ts}\"",
     "lint-staged": "lint-staged",
-    "pretest": "jest --clearCache"
+    "pretest": "jest --clearCache",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
-    "@jkomyno/common-utils": "workspace:*"
+    "@jkomyno/common-utils": "workspace:*",
+    "prisma": "^4.0.0",
+    "@prisma/client": "^4.0.0"
   }
 }

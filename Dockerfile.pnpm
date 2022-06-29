@@ -1,18 +1,34 @@
+ARG DOCKER_BASE_IMAGE="alpine"
 ARG NODE_VERSION="18.0.0"
 ARG PNPM_VERSION="6.32.3"
+
+FROM node:${NODE_VERSION}-alpine as base-alpine
+ENV IS_ALPINE=TRUE
+ENV INSTALL_CMD="apk add --no-cache --upgrade git grep openssl openssl-dev gcompat libc6-compat"
+
+FROM node:${NODE_VERSION}-slim as base-slim
+ENV IS_ALPINE=FALSE
+ENV INSTALL_CMD="apt-get update -y && \
+  apt-get install -y --upgrade git grep openssl"
 
 ##
 # Create base image with pnpm installed 
 ##
 
-FROM node:${NODE_VERSION}-alpine as jkomyno-pnpm
+FROM base-${DOCKER_BASE_IMAGE} as jkomyno-pnpm
 LABEL jkomyno/pnpm-monorepo-example.name=pnpm
 
-RUN apk add git
-RUN apk add --no-cache --upgrade grep
+# for alpine
+RUN eval $INSTALL_CMD
+
 RUN --mount=type=cache,id=pnpm-store,target=/root/.pnpm-store \
   npm i -g pnpm@${PNPM_VERSION}
 
 WORKDIR /app
 
 COPY ["./*.json", "./*.yaml", "./"]
+
+# enable pre/post hooks
+COPY ["./.npmrc", "./.npmrc"]
+
+RUN mkdir ./packages

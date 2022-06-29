@@ -40,6 +40,8 @@
         "^build"
       ]
     },
-    "lint-staged": {}
+    "lint-staged": {},
+    "clean": {},
+    "clean:deep": {}
   }
 }

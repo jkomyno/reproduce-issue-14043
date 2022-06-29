@@ -15,8 +15,9 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
+        docker_base: ["alpine", "slim"]
 
-    name: "Docker: ${{ matrix.os }}"
+    name: "Docker: ${{ matrix.docker_base }}"
 
     env:
       DOCKER_BUILDKIT: 1
@@ -34,8 +35,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-
 
-      - name: Build Docker pnpm image
-        run: docker build -f Dockerfile.pnpm ./packages -t pnpm
+      - name: Build Docker jkomyno-pnpm image from ${{ matrix.docker_base }} Docker base image
+        run: docker build --build-arg DOCKER_BASE_IMAGE=${{ matrix.docker_base }} -f Dockerfile.pnpm . -t jkomyno-pnpm
+
+      - name: Build Docker jkomyno-example image
+        run: docker build -f ./packages/example/Dockerfile ./packages -t jkomyno-example
 
   build:
     runs-on: ${{ matrix.os }}
