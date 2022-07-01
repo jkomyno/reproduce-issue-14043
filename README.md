@@ -1,6 +1,6 @@
 # pnpm-monorepo-example
 
-[![Github Actions](https://github.com/jkomyno/pnpm-monorepo-example/actions/workflows/ci.yaml/badge.svg?branch=master)](https://github.com/jkomyno/pnpm-monorepo-example/actions/workflows/ci.yaml)
+[![Github Actions](https://github.com/jkomyno/reproduce-issue-14043/actions/workflows/ci.yaml/badge.svg?branch=master)](https://github.com/jkomyno/reproduce-issue-14043/actions/workflows/ci.yaml)
 
 > Practical example of a `TypeScript` monorepo with [`pnpm`](https://pnpm.io), [`turborepo`](https://turborepo.org), and [`jest`](https://jestjs.io).
 
@@ -45,18 +45,7 @@ docker run --rm -it jkomyno-example
 - `pnpm test:unit`: run unit tests.
 - `pnpm test:integration`: run integration tests.
 
-## 👤 Author
-
-Hi, I'm **Alberto Schiabel**, you can follow me on:
-
-- Github: [@jkomyno](https://github.com/jkomyno)
-- Twitter: [@jkomyno](https://twitter.com/jkomyno)
-
-## 🦄 Show your support
-
-Give a ⭐️ if this project helped or inspired you!
-
 ## 📝 License
 
-Built with ❤️ by [Alberto Schiabel](https://github.com/jkomyno).<br />
-This project is [MIT](https://github.com/jkomyno/pnpm-monorepo-example/blob/master/LICENSE) licensed.
+Built with ❤️ by [Alberto Schiabel](https://github.com/jkomyno) at [Prisma](https://prisma.io). <br />
+This project is [MIT](https://github.com/jkomyno/reproduce-issue-14043/blob/master/LICENSE) licensed.
