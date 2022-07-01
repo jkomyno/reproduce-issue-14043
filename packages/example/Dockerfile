@@ -25,7 +25,6 @@ RUN --mount=type=cache,id=pnpm-store,target=/root/.pnpm-store \
   pnpm install --frozen-lockfile \
   | grep -v "cross-device link not permitted\|Falling back to copying packages from store"
 
-RUN pnpm --filter "example" postinstall
 RUN pnpm build
 RUN pnpm --filter "example" test:unit
 RUN rm -rf node_modules \
